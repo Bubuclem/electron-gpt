@@ -33,7 +33,7 @@
     "buffer-crc32": "^0.2.13",
     "cacheable-lookup": "^5.0.4",
     "cacheable-request": "^7.0.2",
-    "clone-response": "^1.0.3",
+    "clone-response": "^2.0.0",
     "debug": "^4.3.4",
     "decompress-response": "^6.0.0",
     "defer-to-connect": "^2.0.1",
