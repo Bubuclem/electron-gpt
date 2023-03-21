@@ -37,7 +37,7 @@
     "debug": "^4.3.4",
     "decompress-response": "^8.1.0",
     "defer-to-connect": "^2.0.1",
-    "define-properties": "^1.1.4",
+    "define-properties": "^1.2.0",
     "detect-node": "^2.1.0",
     "dotenv": "^16.0.3",
     "end-of-stream": "^1.4.4",
