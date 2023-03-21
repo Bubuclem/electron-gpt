@@ -63,7 +63,7 @@
     "json-stringify-safe": "^5.0.1",
     "jsonfile": "^4.0.0",
     "keyv": "^4.5.2",
-    "lowercase-keys": "^2.0.0",
+    "lowercase-keys": "^3.0.0",
     "lru-cache": "^6.0.0",
     "matcher": "^3.0.0",
     "mimic-response": "^1.0.1",
