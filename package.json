@@ -58,7 +58,7 @@
     "has-property-descriptors": "^1.0.0",
     "has-symbols": "^1.0.3",
     "http-cache-semantics": "^4.1.1",
-    "http2-wrapper": "^1.0.3",
+    "http2-wrapper": "^2.2.0",
     "json-buffer": "^3.0.1",
     "json-stringify-safe": "^5.0.1",
     "jsonfile": "^6.1.0",
