@@ -76,7 +76,7 @@
     "pend": "^1.2.0",
     "progress": "^2.0.3",
     "pump": "^3.0.0",
-    "quick-lru": "^5.1.1",
+    "quick-lru": "^6.1.1",
     "resolve-alpn": "^1.2.1",
     "responselike": "^2.0.1",
     "roarr": "^2.15.4",
