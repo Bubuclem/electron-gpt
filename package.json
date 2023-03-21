@@ -61,7 +61,7 @@
     "http2-wrapper": "^1.0.3",
     "json-buffer": "^3.0.1",
     "json-stringify-safe": "^5.0.1",
-    "jsonfile": "^4.0.0",
+    "jsonfile": "^6.1.0",
     "keyv": "^4.5.2",
     "lowercase-keys": "^3.0.0",
     "lru-cache": "^8.0.4",
