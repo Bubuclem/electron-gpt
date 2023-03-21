@@ -64,7 +64,7 @@
     "jsonfile": "^4.0.0",
     "keyv": "^4.5.2",
     "lowercase-keys": "^3.0.0",
-    "lru-cache": "^6.0.0",
+    "lru-cache": "^8.0.4",
     "matcher": "^5.0.0",
     "mimic-response": "^1.0.1",
     "ms": "^2.1.3",
