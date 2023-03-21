@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <link href="./styles.css" rel="stylesheet">
+  <title>Chat GPT</title>
+</head>
+
+<body>
+  <div class="m-8 flex flex-col min-h-screen">
+    <div class="divide-y divide-gray-200 rounded-lg flex-1 bg-white shadow overflow-y-auto">
+      <div class="px-4 py-5 sm:p-6">
+        <div id="chat-container" class="mx-2 pb-12">
+          <ul id="chat-list" class="prose">
+            <il class="border-b border-gray-200 block rounded-sm hover:bg-gray-50">Et eodem impetu Domitianum
+              praecipitem
+              per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere
+              discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata
+              deformitatem velut exsaturati mox abiecerunt in flumen.
+              Tantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem
+              diligas
+              atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos
+              perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam
+              possis
+              quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere.
+            </il>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fixed bottom-0 left-0 right-0 px-4 py-4 sm:px-6 bg-white shadow">
+      <form id="chat-form">
+        <label for="chat-input" class="sr-only">Chat</label>
+        <textarea rows="5" name="chat-input" id="chat-input"
+          class="p-2 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
+          placeholder="Tapez votre message..."></textarea>
+        <div class="mt-2 flex justify-end">
+          <button type="submit"
+            class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+
 </html>
