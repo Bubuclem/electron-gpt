@@ -43,7 +43,7 @@
     "end-of-stream": "^1.4.4",
     "env-paths": "^3.0.0",
     "es6-error": "^4.1.1",
-    "escape-string-regexp": "^4.0.0",
+    "escape-string-regexp": "^5.0.0",
     "extract-zip": "^2.0.1",
     "fd-slicer": "^1.1.0",
     "fs-extra": "^11.1.1",
