@@ -35,7 +35,7 @@
     "cacheable-request": "^7.0.2",
     "clone-response": "^2.0.0",
     "debug": "^4.3.4",
-    "decompress-response": "^6.0.0",
+    "decompress-response": "^8.1.0",
     "defer-to-connect": "^2.0.1",
     "define-properties": "^1.1.4",
     "detect-node": "^2.1.0",
