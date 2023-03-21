@@ -78,7 +78,7 @@
     "pump": "^3.0.0",
     "quick-lru": "^6.1.1",
     "resolve-alpn": "^1.2.1",
-    "responselike": "^2.0.1",
+    "responselike": "^3.0.0",
     "roarr": "^2.15.4",
     "semver": "^6.3.0",
     "semver-compare": "^1.0.0",
