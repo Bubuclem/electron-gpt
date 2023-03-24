@@ -15,6 +15,8 @@ chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const userMessage = chatInput.value.trim();
+  if (!userMessage) return;
+
   addMessageToList(userMessage, 'user');
 
   chatInput.value = '';
