@@ -1,3 +1,17 @@
 @tailwind base;
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: gray;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: gainsboro;
+    border-radius: 20px;
+}
+
 @tailwind components;
 @tailwind utilities;
