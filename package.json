@@ -4,7 +4,9 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,11 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
     "@tailwindcss/typography": "^0.5.9",
     "electron": "^23.2.0",
     "tailwindcss": "^3.2.7"
@@ -40,6 +47,7 @@
     "define-properties": "^1.2.0",
     "detect-node": "^2.1.0",
     "dotenv": "^16.0.3",
+    "electron-squirrel-startup": "^1.0.0",
     "end-of-stream": "^1.4.4",
     "env-paths": "^3.0.0",
     "es6-error": "^4.1.1",
