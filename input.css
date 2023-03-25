@@ -5,11 +5,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background: gray;
+    background: #1e293b;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: gainsboro;
+    background-color: #f1f5f9;
     border-radius: 20px;
 }
 
