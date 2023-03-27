@@ -19,19 +19,14 @@ To get started with this project, clone this repository and follow the steps bel
 1. Clone this repository:
 
 ```
-
 git clone https://github.com/Bubuclem/electron-gpt.git 
-
 ```
 
 2. Install the dependencies:
 
 ```
-
 cd electron-gpt
-
 npm install 
-
 ```
 
 3. Set OPENAI_API_KEY=sk-XXXXXX in your environment variables.
@@ -41,9 +36,7 @@ npm install
 1. Start the application:
 
 ```
-
 electron-forge start
-
 ```
 
 2. Type in a message and press enter to send it to the chatbot.
