@@ -1,7 +1,11 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron')
-const path = require('path')
 const { Configuration, OpenAIApi } = require("openai");
+
+const MarkdownIt = require('markdown-it');
+const md = new MarkdownIt();
+
+const path = require('path')
 
 require('dotenv').config();
 
@@ -15,14 +19,14 @@ async function generateText(prompt, messageHistory = []) {
     messageHistory.push({ role: "user", content: prompt });
 
     const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [
         { role: "system", content: "You are a helpful assistant. You speak on French language." },
         ...messageHistory,
       ],
     });
 
-    const assistantMessage = completion.data.choices[0].message.content;
+    const assistantMessage = md.render(completion.data.choices[0].message.content);
     messageHistory.push({ role: "assistant", content: assistantMessage });
 
     // Message history is used to generate the next message

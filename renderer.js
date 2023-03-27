@@ -34,9 +34,12 @@ chatForm.addEventListener('submit', async (e) => {
 });
 
 function addMessageToList(message, role) {
-  const messageElement = document.createElement('li');
-  messageElement.textContent = message;
-  messageElement.classList.add(role, 'border-b', 'border-gray-200');
+  const liElement = document.createElement('li');
+  liElement.classList.add('prose', 'lg:prose-xl', 'border-b', 'border-gray-200');
+  const messageElement = document.createElement('div');
+  messageElement.innerHTML = message;
+  messageElement.classList.add(role, 'text-slate-600', 'dark:text-slate-100');
 
-  chatList.appendChild(messageElement);
+  chatList.appendChild(liElement);
+  liElement.appendChild(messageElement);
 }
