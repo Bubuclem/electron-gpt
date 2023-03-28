@@ -1,22 +1,28 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron')
 const { Configuration, OpenAIApi } = require("openai");
-
+const { Sequelize } = require("sequelize");
 const MarkdownIt = require('markdown-it');
-const md = new MarkdownIt();
-
-const path = require('path')
+const { v4: uuidv4 } = require("uuid");
 
 require('dotenv').config();
+
+const { getMessageHistoryOrCreateMessage, updateConversation } = require("./models/conversation");
+const { createFooterComponent } = require('./components/footer');
+
+const md = new MarkdownIt();
+const path = require('path')
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
-async function generateText(prompt, messageHistory = []) {
+// Get the message history or create a new conversation
+async function generateText(prompt, conversationId) {
   try {
-    messageHistory.push({ role: "user", content: prompt });
+    const { messageHistory, conversationId: newConversationId } = await getMessageHistoryOrCreateMessage(conversationId, prompt);
 
     const completion = await openai.createChatCompletion({
       model: "gpt-4",
@@ -26,15 +32,17 @@ async function generateText(prompt, messageHistory = []) {
       ],
     });
 
-    const assistantMessage = md.render(completion.data.choices[0].message.content);
+    const assistantMessage = completion.data.choices[0].message.content;
     messageHistory.push({ role: "assistant", content: assistantMessage });
+    
+    await updateConversation(newConversationId, messageHistory);
 
-    // Message history is used to generate the next message
-    // console.log("Message history:", JSON.stringify(messageHistory, null, 2));
-
-    return { assistantMessage, messageHistory };
+    const markdownMessageHistory = md.render(assistantMessage);
+    console.log('Markdown message history:', markdownMessageHistory);
+    
+    return { markdownMessageHistory, conversationId };
   } catch (error) {
-    console.error('Erreur lors de la generation du texte:', error);
+    console.error('Error while generating text:', error);
     throw error;
   }
 }
@@ -77,6 +85,25 @@ function createWindow() {
   // mainWindow.webContents.openDevTools()
 }
 
+ipcMain.on('createFooterComponent', (event) => {
+  event.returnValue = createFooterComponent();
+});
+
+ipcMain.handle('getNewConversationId', (event) => {
+  const newId = uuidv4();
+  console.log('New conversation id:', newId);
+  return newId;
+});
+
+ipcMain.handle("generate-text", async (_, prompt, conversationId) => {
+  try {
+    return await generateText(prompt, conversationId);
+  } catch (error) {
+    console.error("Error while generating text:", error);
+    throw error;
+  }
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -99,12 +126,3 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-ipcMain.handle("generate-text", async (_, prompt, messageHistory) => {
-  try {
-    const response = await generateText(prompt, messageHistory);
-    return response;
-  } catch (error) {
-    console.error("Erreur lors de la generation du texte:", error);
-    throw error;
-  }
-});

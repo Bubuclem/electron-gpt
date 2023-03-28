@@ -3,3 +3,4 @@ node_modules
 .vscode
 styles.css
 out/
+database.sqlite3
