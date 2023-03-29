@@ -5,23 +5,11 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
-const chatFooter = document.getElementById('footer-component');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const chatList = document.getElementById('chat-list');
 
 let conversationId = null;
-
-function addFooterToPage() {
-  const footerContainer = document.createElement("div");
-  const footerHTML = window.createFooterComponent();
-  footerContainer.innerHTML = footerHTML;
-  chatFooter.appendChild(footerContainer);
-}
-
-document.addEventListener("footerComponentReady", () => {
-  addFooterToPage();
-});
 
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -29,7 +17,9 @@ chatForm.addEventListener('submit', async (e) => {
   const userMessage = chatInput.value.trim();
   if (!userMessage) return;
 
-  addMessageToList(userMessage, 'user');
+  const messageObject = { content: userMessage };
+
+  addMessageToList(messageObject, 'user');
 
   chatInput.value = '';
 
@@ -39,27 +29,75 @@ chatForm.addEventListener('submit', async (e) => {
     }
 
     const response = await window.electron.generateText(userMessage, conversationId);
-    const { markdownMessageHistory, conversationId: newConversationId } = response;
+    const { assistantMessage, conversationId: newConversationId } = response;
 
-    console.log('assistantMessage:', markdownMessageHistory);
+    console.log('assistantMessage:', assistantMessage);
 
     if (conversationId === null) {
       conversationId = newConversationId;
     }
 
-    addMessageToList(markdownMessageHistory, "assistant");
+    const message = { content: assistantMessage };
+    addMessageToList(message, "assistant");
   } catch (error) {
     console.error('Erreur lors de la generation du texte:', error);
   }
 });
 
-function addMessageToList(message, role) {
+async function addMessageToList(message, role) {
   const liElement = document.createElement('li');
   liElement.classList.add('prose', 'lg:prose-xl', 'border-b', 'border-gray-200');
   const messageElement = document.createElement('div');
-  messageElement.innerHTML = message;
+  messageElement.innerHTML = await window.electron.renderMarkdown(message.content);
   messageElement.classList.add(role, 'text-slate-600', 'dark:text-slate-100');
 
   chatList.appendChild(liElement);
   liElement.appendChild(messageElement);
 }
+
+function createConversationListItem(conversation) {
+  const listItem = document.createElement('li');
+  listItem.innerHTML = `
+    <a href="#" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+      <span class="truncate">${conversation.id}</span>
+    </a>
+  `;
+  listItem.dataset.conversationId = conversation.id;
+  return listItem;
+}
+
+function updateConversationsList(conversations) {
+  const listElement = document.querySelector('#conversation-list');
+  listElement.innerHTML = '';
+
+  conversations.forEach((conversation) => {
+    const listItem = createConversationListItem(conversation);
+
+    listItem.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const currentConversationId = event.currentTarget.dataset.conversationId;
+
+      const conversationData = await window.electron.getConversationFromID(currentConversationId);
+      const messageHistory = JSON.parse(conversationData.messages);
+      chatList.innerHTML = '';
+
+      for (const message of messageHistory) {
+        await addMessageToList(message, message.role);
+      }
+
+      conversationId = currentConversationId;
+    });
+    
+    listElement.appendChild(listItem);
+  });
+}
+
+function onConversationItemClick(event) {
+  const conversationId = event.currentTarget.dataset.conversationId;
+  currentConversationId = conversationId;
+}
+
+(async function () {
+  const conversations = await window.electron.getConversations();
+  updateConversationsList(conversations);
+})();

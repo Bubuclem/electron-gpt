@@ -1,14 +1,12 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron')
 const { Configuration, OpenAIApi } = require("openai");
-const { Sequelize } = require("sequelize");
 const MarkdownIt = require('markdown-it');
 const { v4: uuidv4 } = require("uuid");
 
 require('dotenv').config();
 
-const { getMessageHistoryOrCreateMessage, updateConversation } = require("./models/conversation");
-const { createFooterComponent } = require('./components/footer');
+const { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID } = require("./models/conversation");
 
 const md = new MarkdownIt();
 const path = require('path')
@@ -34,17 +32,18 @@ async function generateText(prompt, conversationId) {
 
     const assistantMessage = completion.data.choices[0].message.content;
     messageHistory.push({ role: "assistant", content: assistantMessage });
-    
+
     await updateConversation(newConversationId, messageHistory);
 
-    const markdownMessageHistory = md.render(assistantMessage);
-    console.log('Markdown message history:', markdownMessageHistory);
-    
-    return { markdownMessageHistory, conversationId };
+    return { assistantMessage, conversationId: newConversationId };
   } catch (error) {
     console.error('Error while generating text:', error);
     throw error;
   }
+}
+
+function renderMarkdown(message) {
+  return md.render(message);
 }
 
 function createWindow() {
@@ -85,14 +84,23 @@ function createWindow() {
   // mainWindow.webContents.openDevTools()
 }
 
-ipcMain.on('createFooterComponent', (event) => {
-  event.returnValue = createFooterComponent();
-});
-
 ipcMain.handle('getNewConversationId', (event) => {
   const newId = uuidv4();
   console.log('New conversation id:', newId);
   return newId;
+});
+
+ipcMain.handle('getConversations', async () => {
+  return await getConversations();
+});
+
+ipcMain.handle('getConversationFromID', async (event, conversationId) => {
+  const conversation = await getConversationFromID(conversationId);
+  return conversation;
+});
+
+ipcMain.handle('renderMarkdown', async (event, message) => {
+  return renderMarkdown(message);
 });
 
 ipcMain.handle("generate-text", async (_, prompt, conversationId) => {

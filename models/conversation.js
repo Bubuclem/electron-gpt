@@ -47,9 +47,29 @@ async function getMessageHistoryOrCreateMessage(conversationId, prompt) {
     return { messageHistory, conversationId };
 }
 
+async function getConversations() {
+    const conversations = await Conversation.findAll();
+    return conversations.map((conversation) => {
+        return {
+            id: conversation.id,
+            messages: conversation.messages,
+        };
+    });
+}
+
+async function getConversationFromID(id) {
+    const conversation = await Conversation.findOne({ where: { id } });
+    if (conversation) {
+        return {
+            id: conversation.id,
+            messages: conversation.messages,
+        };
+    }
+    return null;
+}
 
 (async () => {
     await sequelize.sync();
 })();
 
-module.exports = { getMessageHistoryOrCreateMessage, updateConversation };
+module.exports = { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID };

@@ -14,5 +14,17 @@ contextBridge.exposeInMainWorld('electron', {
 
   getNewConversationId: async () => {
     return await ipcRenderer.invoke('getNewConversationId');
-  }
+  },
+
+  getConversations: async () => {
+    return await ipcRenderer.invoke('getConversations');
+  },
+
+  getConversationFromID: async (conversationId) => {
+    return await ipcRenderer.invoke('getConversationFromID', conversationId);
+  },
+
+  renderMarkdown: async (message) => {
+    return await ipcRenderer.invoke('renderMarkdown', message);
+  },
 });
