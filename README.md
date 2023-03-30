@@ -5,6 +5,10 @@ This repository is a clone of the [electron/electron-quick-start](https://github
 
 The project is a simplified chatbot using OpenAI's GPT (Generative Pre-trained Transformer) model.
 
+<p align="center">
+  <img src="./assets/capture1.png" alt="Capture d'écran 1">
+</p>
+
 ## Getting Started
 
 To get started with this project, clone this repository and follow the steps below.
