@@ -24,6 +24,10 @@ contextBridge.exposeInMainWorld('electron', {
     return await ipcRenderer.invoke('getConversationFromID', conversationId);
   },
 
+  deleteConversation: async (conversationId) => {
+    return await ipcRenderer.invoke('deleteConversation', conversationId);
+  },
+
   renderMarkdown: async (message) => {
     return await ipcRenderer.invoke('renderMarkdown', message);
   },

@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require("uuid");
 
 require('dotenv').config();
 
-const { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID } = require("./models/conversation");
+const { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID, deleteConversation } = require("./models/conversation");
 
 const md = new MarkdownIt();
 const path = require('path')
@@ -86,7 +86,6 @@ function createWindow() {
 
 ipcMain.handle('getNewConversationId', (event) => {
   const newId = uuidv4();
-  console.log('New conversation id:', newId);
   return newId;
 });
 
@@ -97,6 +96,10 @@ ipcMain.handle('getConversations', async () => {
 ipcMain.handle('getConversationFromID', async (event, conversationId) => {
   const conversation = await getConversationFromID(conversationId);
   return conversation;
+});
+
+ipcMain.handle('deleteConversation', async (event, conversationId) => {
+  return await deleteConversation(conversationId);
 });
 
 ipcMain.handle('renderMarkdown', async (event, message) => {

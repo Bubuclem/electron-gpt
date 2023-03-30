@@ -21,9 +21,8 @@ async function updateConversation(id, messageHistory) {
             { messages: JSON.stringify(messageHistory) },
             { where: { id } }
         );
-        console.log("Conversation mise à jour :", id);
     } catch (error) {
-        console.error("Erreur lors de la mise à jour de la conversation :", error);
+        console.error("Error updating conversation :", error);
     }
 }
 
@@ -68,8 +67,23 @@ async function getConversationFromID(id) {
     return null;
 }
 
+async function deleteConversation(id) {
+    try {
+        const deletedRowCount = await Conversation.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        return true;
+    } catch (error) {
+        console.error("Error deleting conversation :", error);
+        return false;
+    }
+}
+
 (async () => {
     await sequelize.sync();
 })();
 
-module.exports = { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID };
+module.exports = { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID, deleteConversation };
