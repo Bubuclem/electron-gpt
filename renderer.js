@@ -5,11 +5,22 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+const newConversationButton = document.getElementById('new-conversation-button');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const chatList = document.getElementById('chat-list');
 
 let conversationId = null;
+
+newConversationButton.addEventListener('click', async (e) => {
+  e.preventDefault();
+  conversationId = await window.electron.getNewConversationId();
+
+  chatList.innerHTML = '';
+  chatInput.value = '';
+
+  addMessageToList({ content: 'Bienvenue dans le chat !\n\nVous pouvez taper votre message et cliquer sur "Envoyer" pour le faire analyser par GPT.' }, 'assistant');
+});
 
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -87,7 +98,7 @@ function updateConversationsList(conversations) {
 
       conversationId = currentConversationId;
     });
-    
+
     listElement.appendChild(listItem);
   });
 }
