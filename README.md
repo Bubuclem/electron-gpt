@@ -6,6 +6,10 @@ This repository is a clone of the [electron/electron-quick-start](https://github
 The project is a simplified chatbot using OpenAI's GPT (Generative Pre-trained Transformer) model.
 
 <p align="center">
+  <img src="./assets/favicon.png" alt="logo made by DALL·E">
+</p>
+
+<p align="center">
   <img src="./assets/capture1.png" alt="Capture d'écran 1">
 </p>
 
@@ -45,4 +49,4 @@ electron-forge start
 
 2. Type in a message and press enter to send it to the chatbot.
 
-The chatbot will respond with a generated message based on the GPT-3 model.
+The chatbot will respond with a generated message based on the GPT model.

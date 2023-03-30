@@ -51,6 +51,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: 'assets/favicon.ico',
     // titleBarStyle: 'hidden',
     // titleBarOverlay: {
     //   color: '#1e293b',
