@@ -64,6 +64,11 @@ async function addMessageToList(message, role) {
 
   chatList.appendChild(liElement);
   liElement.appendChild(messageElement);
+
+  const lastMessage = chatList.lastElementChild;
+  if (lastMessage) {
+    lastMessage.scrollIntoView();
+  }
 }
 
 function createConversationListItem(conversation) {
@@ -117,11 +122,6 @@ function updateConversationsList(conversations) {
       }
 
       conversationId = currentConversationId;
-
-      const lastMessage = chatList.lastElementChild;
-      if (lastMessage) {
-        lastMessage.scrollIntoView();
-      }
     });
 
     listElement.appendChild(listItem);
