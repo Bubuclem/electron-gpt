@@ -57,7 +57,7 @@ chatForm.addEventListener('submit', async (e) => {
 
 async function addMessageToList(message, role) {
   const liElement = document.createElement('li');
-  liElement.classList.add('prose', 'lg:prose-xl', 'border-b', 'border-gray-200');
+  liElement.classList.add('border-b', 'border-gray-200');
   const messageElement = document.createElement('div');
   messageElement.innerHTML = await window.electron.renderMarkdown(message.content);
   messageElement.classList.add(role, 'text-slate-600', 'dark:text-slate-100');
