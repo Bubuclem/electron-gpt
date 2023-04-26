@@ -40,7 +40,7 @@
     "boolean": "^3.2.0",
     "buffer-crc32": "^0.2.13",
     "cacheable-lookup": "^7.0.0",
-    "cacheable-request": "^10.2.9",
+    "cacheable-request": "^10.2.10",
     "clone-response": "^2.0.0",
     "debug": "^4.3.4",
     "decompress-response": "^8.1.0",
