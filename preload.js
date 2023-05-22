@@ -31,4 +31,12 @@ contextBridge.exposeInMainWorld('electron', {
   renderMarkdown: async (message) => {
     return await ipcRenderer.invoke('renderMarkdown', message);
   },
+
+  getSettings: async () => {
+    return await ipcRenderer.invoke('getSettings');
+  },
+
+  updateSettings: async (settings) => {
+    return await ipcRenderer.invoke('updateSettings', settings);
+  }
 });
