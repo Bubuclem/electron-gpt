@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 require('dotenv').config();
 
 const { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID, deleteConversation } = require("./models/conversation");
+const { getSettings, updateSettings } = require("./models/settings");
 
 const md = new MarkdownIt();
 const path = require('path')
@@ -21,11 +22,17 @@ const openai = new OpenAIApi(configuration);
 async function generateText(prompt, conversationId) {
   try {
     const { messageHistory, conversationId: newConversationId } = await getMessageHistoryOrCreateMessage(conversationId, prompt);
+    const settings = await getSettings();
 
     const completion = await openai.createChatCompletion({
-      model: "gpt-4",
+      model: settings.model,
+      // temperature: settings.temperature,
+      // top_p: settings.top_p,
+      // max_tokens: settings.maxLenght,
+      // presence_penalty: settings.presencePenalty,
+      // frequency_penalty: settings.frequencyPenalty,
       messages: [
-        { role: "system", content: "You are a helpful assistant. You speak on French language." },
+        { role: "system", content: settings.prompt },
         ...messageHistory,
       ],
     });
@@ -66,7 +73,7 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('index.html');
 
   ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
@@ -112,6 +119,24 @@ ipcMain.handle("generate-text", async (_, prompt, conversationId) => {
     return await generateText(prompt, conversationId);
   } catch (error) {
     console.error("Error while generating text:", error);
+    throw error;
+  }
+});
+
+ipcMain.handle("getSettings", async () => {
+  try {
+    return await getSettings();
+  } catch (error) {
+    console.error("Error while getting settings:", error);
+    throw error;
+  }
+});
+
+ipcMain.handle("updateSettings", async (_, settings) => {
+  try {
+    return await updateSettings(settings);
+  } catch (error) {
+    console.error("Error while updating settings:", error);
     throw error;
   }
 });
