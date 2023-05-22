@@ -17,11 +17,10 @@
           <nav class="flex flex-1 flex-col pt-4">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
               <li>
-                <div class="text-sm font-bold leading-6 text-slate-200">
-                  <p class="truncate">Your Conversations</p>
+                <div class="label">
+                  <p class="label-text">Your Conversations</p>
                 </div>
-                <button id="new-conversation-button"
-                  class="w-full group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
+                <button id="new-conversation-button" class="btn btn-ghost btn-block">
                   <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     aria-hidden="true">
                     <path
@@ -32,9 +31,8 @@
                 <ul id="conversation-list" role="list" class="-mx-2 mt-2 space-y-1">
                 </ul>
               </li>
-              <li class="mt-auto sr-only">
-                <button
-                  class="group w-full -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
+              <li class="mt-auto">
+                <label class="btn btn-ghost btn-block gap-2" for="modal-settings">
                   <svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,7 +40,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <p class="truncate">Settings</p>
-                </button>
+                </label>
               </li>
             </ul>
           </nav>
@@ -69,18 +67,57 @@
       <div class="my-4">
         <form id="chat-form">
           <label for="chat-input" class="sr-only">Chat</label>
-          <textarea rows="5" name="chat-input" id="chat-input"
-            class="px-4 py-5 sm:p-6 text-base lg:text-lg rounded-lg bg-white dark:bg-slate-600 w-full text-slate-600 dark:text-slate-100 resize-none"
+          <textarea rows="5" name="chat-input" id="chat-input" class="textarea textarea-bordered w-full resize-none"
             placeholder="Tapez votre message..."></textarea>
           <div class="mt-2 flex justify-end">
-            <button type="submit"
-              class="inline-flex items-center rounded-md bg-slate-100 px-3 py-2 text-sm lg:text-xl font-semibold text-slate-800 shadow-sm hover:bg-slate-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Envoyer</button>
+            <button type="submit" class="btn btn-ghost">Envoyer</button>
           </div>
         </form>
       </div>
     </div>
 
   </div>
+
+  <input type="checkbox" id="modal-settings" class="modal-toggle" />
+  <label for="modal-settings" class="modal cursor-pointer">
+    <label class="modal-box relative space-y-4" for="">
+      <h3 class="text-lg font-bold">Settings</h3>
+
+      <select id="theme-select" class="select select-bordered w-full">
+        <option disabled selected>Theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <select id="language-select" class="select select-bordered w-full">
+        <option disabled selected>Language</option>
+        <option value="en">English</option>
+        <option value="fr">French</option>
+      </select>
+
+      <select class="select select-bordered w-full">
+        <option disabled selected>Model</option>
+        <option>gpt-4</option>
+        <option>gpt-3.5-turbo</option>
+      </select>
+
+      <button id="save-settings" class='btn btn-accent btn-block gap-2'>
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Save
+      </button>
+
+      <button class='btn btn-error btn-block gap-2'>
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+        </svg>
+        Delete all conversations
+      </button>
+    </label>
+  </label>
 
   <script src="./renderer.js"></script>
 </body>
