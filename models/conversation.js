@@ -82,8 +82,19 @@ async function deleteConversation(id) {
     }
 }
 
+async function deleteAllConversations() {
+    try {
+        const deletedRowCount = await Conversation.destroy({
+            where: {},
+            truncate: true
+        });
+    } catch (error) {
+        console.error("Error deleting all conversations :", error);
+    }
+}
+
 (async () => {
     await sequelize.sync();
 })();
 
-module.exports = { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID, deleteConversation };
+module.exports = { getMessageHistoryOrCreateMessage, updateConversation, getConversations, getConversationFromID, deleteConversation, deleteAllConversations };
