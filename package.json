@@ -92,7 +92,7 @@
     "roarr": "^7.15.0",
     "semver": "^7.5.1",
     "semver-compare": "^1.0.0",
-    "sequelize": "^6.31.1",
+    "sequelize": "^6.32.0",
     "serialize-error": "^11.0.0",
     "sprintf-js": "^1.1.2",
     "sqlite3": "^5.1.6",
