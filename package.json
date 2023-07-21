@@ -71,7 +71,7 @@
     "json-buffer": "^3.0.1",
     "json-stringify-safe": "^5.0.1",
     "jsonfile": "^6.1.0",
-    "keyv": "^4.5.2",
+    "keyv": "^4.5.3",
     "lowercase-keys": "^3.0.0",
     "lru-cache": "^10.0.0",
     "markdown-it": "^13.0.1",
