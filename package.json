@@ -58,7 +58,7 @@
     "fs-extra": "^11.1.1",
     "function-bind": "^1.1.1",
     "get-intrinsic": "^1.2.1",
-    "get-stream": "^7.0.1",
+    "get-stream": "^8.0.1",
     "global-agent": "^3.0.0",
     "globalthis": "^1.0.3",
     "got": "^13.0.0",
