@@ -26,7 +26,7 @@
     "@electron-forge/maker-deb": "^6.3.0",
     "@electron-forge/maker-rpm": "^6.4.0",
     "@electron-forge/maker-squirrel": "^6.3.0",
-    "@electron-forge/maker-zip": "^6.3.0",
+    "@electron-forge/maker-zip": "^6.4.1",
     "@tailwindcss/typography": "^0.5.9",
     "electron": "^26.0.0",
     "tailwindcss": "^3.3.3"
