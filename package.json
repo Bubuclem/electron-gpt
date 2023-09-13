@@ -45,7 +45,7 @@
     "debug": "^4.3.4",
     "decompress-response": "^8.1.0",
     "defer-to-connect": "^2.0.1",
-    "define-properties": "^1.2.0",
+    "define-properties": "^1.2.1",
     "detect-node": "^2.1.0",
     "dotenv": "^16.3.1",
     "electron-squirrel-startup": "^1.0.0",
