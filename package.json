@@ -74,7 +74,7 @@
     "keyv": "^4.5.3",
     "lowercase-keys": "^3.0.0",
     "lru-cache": "^10.0.1",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "matcher": "^5.0.0",
     "mimic-response": "^4.0.0",
     "ms": "^2.1.3",
