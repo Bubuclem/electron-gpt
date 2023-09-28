@@ -94,7 +94,7 @@
     "semver-compare": "^1.0.0",
     "sequelize": "^6.33.0",
     "serialize-error": "^11.0.2",
-    "sprintf-js": "^1.1.2",
+    "sprintf-js": "^1.1.3",
     "sqlite3": "^5.1.6",
     "sumchecker": "^3.0.1",
     "type-fest": "^4.3.1",
