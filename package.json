@@ -98,7 +98,7 @@
     "sqlite3": "^5.1.6",
     "sumchecker": "^3.0.1",
     "type-fest": "^4.6.0",
-    "universalify": "^2.0.0",
+    "universalify": "^2.0.1",
     "uuid": "^9.0.1",
     "wrappy": "^1.0.2",
     "yallist": "^4.0.0",
