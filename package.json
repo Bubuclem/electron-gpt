@@ -89,7 +89,7 @@
     "quick-lru": "^7.0.0",
     "resolve-alpn": "^1.2.1",
     "responselike": "^3.0.0",
-    "roarr": "^7.18.3",
+    "roarr": "^7.21.0",
     "semver": "^7.5.4",
     "semver-compare": "^1.0.0",
     "sequelize": "^6.35.0",
