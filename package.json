@@ -73,7 +73,7 @@
     "jsonfile": "^6.1.0",
     "keyv": "^4.5.4",
     "lowercase-keys": "^3.0.0",
-    "lru-cache": "^10.0.2",
+    "lru-cache": "^10.0.3",
     "markdown-it": "^13.0.2",
     "matcher": "^5.0.0",
     "mimic-response": "^4.0.0",
