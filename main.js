@@ -59,11 +59,6 @@ function createWindow() {
     width: 800,
     height: 600,
     icon: 'assets/favicon.ico',
-    // titleBarStyle: 'hidden',
-    // titleBarOverlay: {
-    //   color: '#1e293b',
-    //   symbolColor: '#f1f5f9'
-    // },
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
