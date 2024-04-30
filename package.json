@@ -60,7 +60,7 @@
     "get-intrinsic": "^1.2.4",
     "get-stream": "^9.0.1",
     "global-agent": "^3.0.0",
-    "globalthis": "^1.0.3",
+    "globalthis": "^1.0.4",
     "got": "^14.2.1",
     "graceful-fs": "^4.2.11",
     "has": "^1.0.4",
