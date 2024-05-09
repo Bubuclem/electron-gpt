@@ -90,7 +90,7 @@
     "resolve-alpn": "^1.2.1",
     "responselike": "^3.0.0",
     "roarr": "^7.21.1",
-    "semver": "^7.6.0",
+    "semver": "^7.6.1",
     "semver-compare": "^1.0.0",
     "sequelize": "^6.37.3",
     "serialize-error": "^11.0.3",
