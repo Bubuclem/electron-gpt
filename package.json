@@ -48,7 +48,7 @@
     "define-properties": "^1.2.1",
     "detect-node": "^2.1.0",
     "dotenv": "^16.4.5",
-    "electron-squirrel-startup": "^1.0.0",
+    "electron-squirrel-startup": "^1.0.1",
     "end-of-stream": "^1.4.4",
     "env-paths": "^3.0.0",
     "es6-error": "^4.1.1",
