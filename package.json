@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/electron/electron-quick-start#readme",
   "dependencies": {
-    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/forms": "^0.5.8",
     "boolean": "^3.2.0",
     "buffer-crc32": "^1.0.0",
     "cacheable-lookup": "^7.0.0",
