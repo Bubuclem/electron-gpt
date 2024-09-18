@@ -85,7 +85,7 @@
     "p-cancelable": "^4.0.1",
     "pend": "^1.2.0",
     "progress": "^2.0.3",
-    "pump": "^3.0.0",
+    "pump": "^3.0.2",
     "quick-lru": "^7.0.0",
     "resolve-alpn": "^1.2.1",
     "responselike": "^3.0.0",
