@@ -61,7 +61,7 @@
     "get-stream": "^9.0.1",
     "global-agent": "^3.0.0",
     "globalthis": "^1.0.4",
-    "got": "^14.4.2",
+    "got": "^14.4.3",
     "graceful-fs": "^4.2.11",
     "has": "^1.0.4",
     "has-property-descriptors": "^1.0.2",
