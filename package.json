@@ -65,7 +65,7 @@
     "graceful-fs": "^4.2.11",
     "has": "^1.0.4",
     "has-property-descriptors": "^1.0.2",
-    "has-symbols": "^1.0.3",
+    "has-symbols": "^1.1.0",
     "http-cache-semantics": "^4.1.1",
     "http2-wrapper": "^2.2.1",
     "json-buffer": "^3.0.1",
