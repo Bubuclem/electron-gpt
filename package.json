@@ -42,7 +42,7 @@
     "cacheable-lookup": "^7.0.0",
     "cacheable-request": "^13.0.2",
     "clone-response": "^2.0.0",
-    "debug": "^4.3.7",
+    "debug": "^4.4.0",
     "decompress-response": "^9.0.0",
     "defer-to-connect": "^2.0.1",
     "define-properties": "^1.2.1",
