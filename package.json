@@ -57,7 +57,7 @@
     "fd-slicer": "^1.1.0",
     "fs-extra": "^11.2.0",
     "function-bind": "^1.1.2",
-    "get-intrinsic": "^1.2.6",
+    "get-intrinsic": "^1.2.7",
     "get-stream": "^9.0.1",
     "global-agent": "^3.0.0",
     "globalthis": "^1.0.4",
