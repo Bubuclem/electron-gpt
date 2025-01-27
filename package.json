@@ -81,7 +81,7 @@
     "normalize-url": "^8.0.1",
     "object-keys": "^1.1.1",
     "once": "^1.4.0",
-    "openai": "^4.78.1",
+    "openai": "^4.80.1",
     "p-cancelable": "^4.0.1",
     "pend": "^1.2.0",
     "progress": "^2.0.3",
